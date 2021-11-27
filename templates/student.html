@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>{{name}}</title>
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+
+        <!-- jQuery library -->
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+
+        <!-- Latest compiled JavaScript -->
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+        <script type="text/javascript">
+            $(document).ready(function() {
+                $( "#create" ).click(function() {
+                    window.location = "{{url_for('index')}}";
+                });
+            });
+        </script>
+
+</head>
+<body>
+<div class="container">
+<p> </p><p> </p><br>
+    <div class="row">
+      <div class="col col-xs-6">
+        <h3 class="panel-title">{{name}} - {{id}}</h3>
+      </div>
+      <div class="col col-xs-6 text-right">
+        <button id="create" type="button" class="btn btn-sm btn-primary btn-create">Back To List</button>
+      </div>
+    </div>
+  <form action="/action_page.php">
+    <div class="form-group">
+      <label for="name">Name:</label>
+      <input type="name" class="form-control" id="name" placeholder="Enter name" name="name" value="{{name}}" readonly>
+    </div>  
+        <label for="pwd">Subject:</label>
+        {% for subject , mark in student.items() %}
+            <div class="form-group">
+                <div class="col-md-3 col-sm-3 col-xs-6">
+                    <input type="text" class="form-control" name="subject[]" placeholder="Subject" readonly value="{{subject}}" />
+                </div>
+                <div class="col-md-3 col-sm-3 col-xs-6">
+                    <input type="text" class="form-control" name="marks[]" placeholder="Marks" readonly value="{{mark}}" />
+                </div>
+            </div>
+            <br><br>
+        {% endfor %}
+    <!-- <button type="submit" class="btn btn-default">Submit</button> -->
+  </form>
+</div>
+</body>
+</html>
